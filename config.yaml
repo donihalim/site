@@ -1,0 +1,34 @@
+baseURL: '/'
+languageCode: 'en-us'
+title: 'Doni Halim'
+
+enableGitInfo: true
+
+disableKinds:
+  - taxonomy
+  - term
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+params:
+  author: 'Doni Halim'
+  email: 'donihalim@protonmail.com'
+  description: 'Personal website of Doni Halim'
+
+menus:
+  main:
+    - name: Posts Archive
+      url: /posts/
+      weight: 10
+
+    - name: About
+      url: /about/
+      weight: 1
+
+  other:
+    - name: Repository (Github)
+      url: https://github.com/donihalim
+      weight: 10

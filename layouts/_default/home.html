@@ -1,0 +1,41 @@
+{{ define "main" }}
+  {{ .Content }}
+  <hr>
+  <h2>Pages</h2>
+  <ul>
+    {{ range .Site.Menus.main.ByWeight }}
+    <li>
+      <a href="{{ .URL }}">{{ .Name }}</a>
+    </li>
+    {{ end }}
+    <li>
+      <span>External links</span>
+      <ul>
+        {{ range .Site.Menus.other.ByWeight }}
+        <li>
+          <a href="{{ .URL }}">{{ .Name }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    </li>
+  </ul>
+  <hr>
+  <h2>Blog Posts</h2>
+  <p>Some posts are in Bahasa Indonesia; those are marked with [ID].</p>
+  <p>Feeds: <a href="/index.xml">RSS</a></p>
+  <ul>
+    {{ range (where .Site.RegularPages "Type" "in" (slice "posts")) }}
+    <li>
+      <span>{{ .Date.Format "2006-01-02" }}</span>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+  </ul>
+{{ end }}
+
+{{ define "footer" }}
+  <br>
+  <small>
+  Copyright &copy; {{ time.Now.Year }} {{ .Site.Params.author }} (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">License</a>)
+  </small>
+{{ end }}

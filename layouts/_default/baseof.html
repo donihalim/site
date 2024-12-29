@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="{{ .Site.Params.author }}">
+    <meta name="description" content="{{ .Description }}">
+
+    <title>{{- block "title" . }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{- end }}</title>
+
+    <link rel="icon" href="data:,">
+    {{ $css := resources.Get "css/main.css" | minify | fingerprint "sha512" }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+  </head>
+  <body>
+    <header>
+      {{ block "header" . }}
+      <a href="{{ relURL .Site.Home.RelPermalink }}" id="title"><h1>{{ .Site.Title }}</h1></a>
+      {{ end }}
+    </header>
+    <main>
+      {{ block "main" . }} {{ end }}
+    </main>
+    <footer>
+      {{ block "footer" . }} {{ end }}
+    </footer>
+  </body>
+</html>
