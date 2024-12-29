@@ -1,15 +1,15 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
-  {{ range (where .Site.RegularPages "Type" "in" (slice "posts")).GroupByDate "2006" }}
-  <p>{{ .Key }}</p>
-  <ul>
-    {{ range .Pages }}
-    <li>
-      <span>{{ .Date.Format "Jan 02" }}</span>
-      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-    </li>
-    {{ end }}
-  </ul>
+<h1>{{ .Title }}</h1>
+{{ .Content }}
+{{ range (where .Site.RegularPages "Type" "in" (slice "posts")).GroupByDate "2006" }}
+<p>{{ .Key }}</p>
+<ul>
+  {{ range .Pages }}
+  <li>
+    <span>{{ .Date.Format "Jan 02" }}</span>
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+  </li>
   {{ end }}
+</ul>
+{{ end }}
 {{ end }}

@@ -6,7 +6,7 @@ body {
   max-width: 70ch;
   font: medium/1.62 sans-serif;
   overflow-x: hidden;
-	word-break: break-word;
+  word-break: break-word;
   overflow-wrap: break-word;
 }
 
@@ -15,33 +15,33 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-	font-size: 1.4em;
+  font-size: 1.4em;
 }
 
 h2 {
-	font-size: 1.3em;
+  font-size: 1.3em;
 }
 
 h3 {
-	font-size: 1.0em;
+  font-size: 1.0em;
 }
 
 h4, h5, h6 {
-	font-size: 0.9em;
+  font-size: 0.9em;
 }
 
 a {
-	color: #005386; /*from suckless.org*/
+  color: #005386; /*from suckless.org*/
 }
 
 code, pre, kbd, samp {
-	font-family: monospace;
+  font-family: monospace;
 }
 
 pre {
-	padding: 20px;
-	max-width: 100%;
-	overflow: auto;
+  padding: 20px;
+  max-width: 100%;
+  overflow: auto;
 }
 
 nav a {
@@ -54,13 +54,13 @@ nav a {
 }
 
 @media (prefers-color-scheme: dark) {
-	body {
-		background-color: #000;
-		color: #bdbdbd;
-	}
+  body {
+    background-color: #000;
+    color: #bdbdbd;
+  }
   a {
-		color: #56c8ff;
-	}
+    color: #56c8ff;
+  }
   #title {
     color: #bdbdbd;
   }
