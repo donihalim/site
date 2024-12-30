@@ -1,3 +1,9 @@
+{{ define "header" }}
+<header>
+  <a href="{{ relURL .Site.Home.RelPermalink }}" id="title"><h1>{{ .Site.Title }}</h1></a>
+</header>
+{{ end }}
+
 {{ define "main" }}
 {{ .Content }}
 <hr>
