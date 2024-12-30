@@ -28,7 +28,7 @@ jobs:
           find . -maxdepth 4 -type f -name "*.$v" -print | parallel brotli -k -f -q 11 {}
           done
         env:
-          FILE_EXT: 'js,css,html,svg,txt,woff,woff2,pdf'
+          FILE_EXT: 'js,css,html,xml,svg,txt,woff,woff2,pdf'
       - name: rsync deployments
         uses: burnett01/rsync-deployments@7.0.1
         with:
