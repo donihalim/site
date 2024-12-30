@@ -21,9 +21,14 @@ jobs:
       - name: Build site
         run: hugo --minify
       - name: Compress site with brotli
+        working-directory: public
         run: |
-          find public/ -type f -name '*.html' -o -name '*.js' -o -name '*.css' -o -name '*.xml' -o -name '*.svg' \ 
-          -exec brotli -v -k -f --best {} \;
+          for v in $(tr ',' '\n' <<< "$FILE_EXT")
+          do
+          find . -maxdepth 4 -type f -name "*.$v" -print | parallel brotli -k -f -q 11 {}
+          done
+        env:
+          FILE_EXT: 'js,css,html,svg,txt,woff,woff2,pdf'
       - name: rsync deployments
         uses: burnett01/rsync-deployments@7.0.1
         with:
