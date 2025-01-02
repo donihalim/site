@@ -48,9 +48,8 @@ nav a {
   margin-right: 10px;
 }
 
-#title {
-  color: #000;
-  text-decoration: none;
+img {
+  max-width: 100%;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -1,34 +1,50 @@
 baseURL: 'https://donihalim.id'
 languageCode: 'en-us'
 title: 'Doni Halim'
-
 enableGitInfo: true
-
-disableKinds:
-  - taxonomy
-  - term
 
 markup:
   goldmark:
     renderer:
       unsafe: true
 
+disableKinds:
+  - taxonomy
+  - term
+
+permalinks:
+  page:
+    blog: /blog/:year/:month/:day/:slug/
+
+outputs:
+  home:
+    - html
+
+  page:
+    - html
+
+  section:
+    - html
+    - rss
+    - atom
+
+mediaTypes:
+  application/atom+xml:
+    suffixes:
+      - xml
+
+outputFormats:
+  rss:
+    mediaType: application/xml
+    baseName: rss
+
+  atom:
+    mediaType: application/atom+xml
+    basename: atom
+
 params:
-  author: 'Doni Halim'
-  email: 'donihalim@protonmail.com'
   description: 'Personal website of Doni Halim'
+  author:
+    name: 'Doni Halim'
+    email: 'donihalim@protonmail.com'
 
-menus:
-  main:
-    - name: Posts Archive
-      url: /posts/
-      weight: 10
-
-    - name: About
-      url: /about/
-      weight: 1
-
-  other:
-    - name: Repository (Github)
-      url: https://github.com/donihalim
-      weight: 10

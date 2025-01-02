@@ -1,49 +1,15 @@
 {{ define "header" }}
-<header>
-  <a href="{{ relURL .Site.Home.RelPermalink }}" id="title"><h1>{{ .Site.Title }}</h1></a>
-</header>
+<h1>{{ .Site.Title }}</h1>
 {{ end }}
 
 {{ define "main" }}
 {{ .Content }}
-<hr>
-<h2>Pages</h2>
-<ul>
-  {{ range .Site.Menus.main.ByWeight }}
-  <li>
-    <a href="{{ .URL }}">{{ .Name }}</a>
-  </li>
-  {{ end }}
-  <li>
-    <span>External links</span>
-    <ul>
-      {{ range .Site.Menus.other.ByWeight }}
-      <li>
-        <a href="{{ .URL }}">{{ .Name }}</a>
-      </li>
-      {{ end }}
-    </ul>
-  </li>
-</ul>
-<hr>
-<h2>Blog Posts</h2>
-<p>Some posts are in Bahasa Indonesia; those are marked with [ID].</p>
-<p>Feeds: <a href="/index.xml">RSS</a></p>
-<ul>
-  {{ range (where .Site.RegularPages "Type" "in" (slice "posts")) }}
-  <li>
-    <span>{{ .Date.Format "2006-01-02" }}</span>
-    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-  </li>
-  {{ end }}
-</ul>
 {{ end }}
 
 {{ define "footer" }}
-<br>
-<footer>
-  <small>
-    Copyright &copy; {{ time.Now.Year }} {{ .Site.Params.author }} (<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">License</a>)
-  </small>
-</footer>
+<h2>License</h2>
+<p>
+  Copyright &copy; {{ time.Now.Year }} {{ .Site.Params.Author.name }}. All Rights Reserved. Except where otherwise noted, content of this website is licensed under Creative Commons Attribution 4.0 International License
+  <a href="https://web.archive.org/web/20230202005829/https://creativecommons.org/licenses/by/4.0/"><img src="http://mirrors.creativecommons.org/presskit/buttons/80x15/svg/by.svg" alt="CC-BY 4.0"></a>
+</p>
 {{ end }}

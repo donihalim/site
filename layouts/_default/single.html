@@ -1,0 +1,9 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+{{ .Content }}
+<p>
+  See <a href="https://github.com/donihalim/site/commits/main/content/{{ .File.Path }}">changelog</a>
+  <span>or</span>
+  reply via <a href='mailto:{{ .Site.Params.Author.email }}?subject=RE: {{ default $.Site.Title $.Page.Title }}'>email</a>.
+</p>
+{{ end }}
