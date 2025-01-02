@@ -25,7 +25,7 @@ jobs:
         run: |
           for v in $(tr ',' '\n' <<< "$FILE_EXT")
           do
-          find . -maxdepth 4 -type f -name "*.$v" -print | parallel brotli -k -f -q 11 {}
+          find . -type f -name "*.$v" -print | parallel brotli -k -f -q 11 {}
           done
         env:
           FILE_EXT: 'js,css,html,xml,svg,txt,woff,woff2,pdf'
