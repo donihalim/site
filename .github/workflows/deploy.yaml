@@ -1,0 +1,38 @@
+name: Deploy site to the remote server
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install Hugo CLI
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.140.1'
+          extended: true
+      - name: Build with Hugo
+        run: hugo --gc --minify
+      - name: Pre-compress site with brotli
+        working-directory: public
+        run: |
+          for v in $(tr ',' '\n' <<< "$FILE_EXT")
+          do
+          find . -type f -name "*.$v" -print | parallel brotli -k -f -q 11 {}
+          done
+        env:
+          FILE_EXT: 'js,css,html,xml,svg,txt'
+      - name: Copy generated site to the remote server
+        uses: burnett01/rsync-deployments@7.0.1
+        with:
+          switches: -avzr --delete
+          path: public/
+          remote_path: ${{ secrets.REMOTE_PATH }}
+          remote_host: ${{ secrets.REMOTE_HOST }}
+          remote_user: ${{ secrets.REMOTE_USER }}
+          remote_key: ${{ secrets.REMOTE_KEY }}
